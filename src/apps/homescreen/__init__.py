@@ -52,7 +52,13 @@ async def respond_Pong(ctx, msg):
     return s
 
 
+@unimport
+def run_signtx_preview(*args, **kwargs):
+    from .homescreen import layout_signtx_preview
+    return layout_signtx_preview(*args, **kwargs)
+
+
 def boot():
     register(Initialize, protobuf_workflow, respond_Features)
     register(GetFeatures, protobuf_workflow, respond_Features)
-    register(Ping, protobuf_workflow, respond_Pong)
+    register(Ping, protobuf_workflow, run_signtx_preview)
