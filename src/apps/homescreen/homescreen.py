@@ -42,16 +42,16 @@ async def layout_signtx_preview(ctx, msg):
 async def page_signtx_preview(page, page_count):
     from trezor.ui.button import Button, CONFIRM_BUTTON, CONFIRM_BUTTON_ACTIVE
     from trezor.ui.scroll import render_scrollbar, animate_swipe
+    from trezor.ui.text import Text
+    from apps.common.confirm import hold_to_confirm
 
     ui.display.clear()
-    ui.header('Sign transaction', ui.ICON_RESET, ui.BLACK, ui.LIGHT_GREEN)
 
+    content = Text('Sign transaction', ui.ICON_RESET)
+    content.render()
     render_scrollbar(page, page_count)
 
     if page + 1 == page_count:
-        await Button(
-            (0, 240 - 48, 240, 48), 'Finish',
-            normal_style=CONFIRM_BUTTON,
-            active_style=CONFIRM_BUTTON_ACTIVE)
+        await hold_to_confirm(NullContext(), content)
     else:
         await animate_swipe()
