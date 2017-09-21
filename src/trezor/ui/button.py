@@ -10,71 +10,72 @@ from trezor.ui import Widget
 
 
 DEFAULT_BUTTON = {
-    'bg-color': ui.BLACK,
-    'fg-color': ui.WHITE,
+    'bg-color': ui.C_KEY_BTN,
+    'fg-color': ui.C_FONT,
     'text-style': ui.NORMAL,
-    'border-color': ui.BLACK,
+    'border-color': ui.C_SCREEN_BG,
     'radius': ui.BTN_RADIUS,
 }
 DEFAULT_BUTTON_ACTIVE = {
-    'bg-color': ui.GREY,
-    'fg-color': ui.BLACK,
-    'text-style': ui.BOLD,
-    'border-color': ui.GREY,
+    'bg-color': ui.C_KEY_BTN_DIS,
+    'fg-color': ui.C_FONT,
+    'text-style': ui.NORMAL,
+    'border-color': ui.C_SCREEN_BG,
     'radius': ui.BTN_RADIUS,
 }
 DEFAULT_BUTTON_DISABLED = {
-    'bg-color': ui.BLACK,
-    'fg-color': ui.GREY,
+    'bg-color': ui.C_KEY_BTN_DIS,
+    'fg-color': ui.C_FONT_DIS,
     'text-style': ui.NORMAL,
-    'border-color': ui.BLACK,
+    'border-color': ui.C_KEY_BTN_DIS,
     'radius': ui.BTN_RADIUS,
 }
 
 CANCEL_BUTTON = {
-    'bg-color': ui.RED,
-    'fg-color': ui.WHITE,
+    'bg-color': ui.C_CANCEL_BTN,
+    'fg-color': ui.C_FONT,
     'text-style': ui.BOLD,
-    'border-color': ui.RED,
+    'border-color': ui.C_SCREEN_BG,
     'radius': ui.BTN_RADIUS,
 }
 CANCEL_BUTTON_ACTIVE = {
-    'bg-color': ui.ACTIVE_RED,
-    'fg-color': ui.WHITE,
+    'bg-color': ui.C_CANCEL_BTN_DIS,
+    'fg-color': ui.C_FONT_DIS,
     'text-style': ui.BOLD,
-    'border-color': ui.ACTIVE_RED,
+    'border-color': ui.C_SCREEN_BG,
     'radius': ui.BTN_RADIUS,
 }
 
 CONFIRM_BUTTON = {
-    'bg-color': ui.GREEN,
-    'fg-color': ui.WHITE,
+    'bg-color': ui.C_CONFIRM_BTN,
+    'fg-color': ui.C_FONT,
     'text-style': ui.BOLD,
-    'border-color': ui.GREEN,
+    'border-color': ui.C_SCREEN_BG,
     'radius': ui.BTN_RADIUS,
 }
 CONFIRM_BUTTON_ACTIVE = {
-    'bg-color': ui.ACTIVE_GREEN,
-    'fg-color': ui.WHITE,
+    'bg-color': ui.C_CONFIRM_BTN_DIS,
+    'fg-color': ui.C_FONT_DIS,
     'text-style': ui.BOLD,
-    'border-color': ui.ACTIVE_GREEN,
+    'border-color': ui.C_SCREEN_BG,
     'radius': ui.BTN_RADIUS,
 }
 
 CLEAR_BUTTON = {
-    'bg-color': ui.BLACK,
-    'fg-color': ui.WHITE,
+    'bg-color': ui.C_CLEAN_BTN,
+    'fg-color': ui.C_FONT,
     'text-style': ui.NORMAL,
-    'border-color': ui.BLACK,
+    'border-color': ui.C_CLEAN_BTN,
     'radius': ui.BTN_RADIUS,
 }
 CLEAR_BUTTON_ACTIVE = {
-    'bg-color': ui.BLACK,
-    'fg-color': ui.GREY,
+    'bg-color': ui.C_CLEAN_BTN_DIS,
+    'fg-color': ui.C_FONT_DIS,
     'text-style': ui.NORMAL,
-    'border-color': ui.BLACK,
+    'border-color': ui.C_CLEAN_BTN_DIS,
     'radius': ui.BTN_RADIUS,
 }
+
 
 BTN_CLICKED = const(1)
 
@@ -124,9 +125,9 @@ class Button(Widget):
         ty = ay + ah // 2 + 8
         display.bar_radius(ax, ay, aw, ah,
                            style['border-color'],
-                           ui.BLACK,
+                           ui.C_SCREEN_BG,
                            style['radius'])
-        display.bar_radius(ax + 1, ay + 1, aw - 2, ah - 2,
+        display.bar_radius(ax + 3, ay + 3, aw - 6, ah - 6,
                            style['bg-color'],
                            style['border-color'],
                            style['radius'])
@@ -138,7 +139,7 @@ class Button(Widget):
                                 style['bg-color'])
 
         else:
-            display.icon(ax, ay, self.content,
+            display.icon(tx - 15, ty - 20, self.content,
                          style['fg-color'],
                          style['bg-color'])
 

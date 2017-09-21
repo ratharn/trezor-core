@@ -3,13 +3,12 @@ from trezor.utils import unimport
 
 
 def display_homescreen_lock(unlocked):
-    image = res.load('apps/homescreen/res/trezor_logo.toig')
-    ui.display.icon(0, 0, image, ui.WHITE, ui.BLACK)
     if unlocked:
-        label = 'My TREZOR (Unlocked)'
+        image = res.load('trezor/res/unlock-home3.toif')
+        ui.display.image(0, 0, image)
     else:
-        label = 'My TREZOR (Locked)'
-    ui.display.text_center(120, 210, label, ui.BOLD, ui.WHITE, ui.BLACK)
+        image = res.load('trezor/res/lock-home3.toif')
+        ui.display.image(0, 0, image)
 
 
 class NullContext:
@@ -44,8 +43,7 @@ async def page_signtx_preview(page, page_count):
     from trezor.ui.scroll import render_scrollbar, animate_swipe
     from trezor.ui.text import Text
     from apps.common.confirm import hold_to_confirm
-
-    ui.display.clear()
+    ui.display.bar(0, 0, 240, 240, ui.C_SCREEN_BG)
 
     content = Text('Sign transaction', ui.ICON_RESET)
     content.render()

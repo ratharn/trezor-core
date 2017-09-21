@@ -14,11 +14,15 @@ async def request_pin_on_display(ctx: wire.Context, code: int=None) -> str:
     from trezor.messages.wire_types import ButtonAck
     from trezor.ui.confirm import ConfirmDialog, CONFIRMED
     from trezor.ui.pin import PinMatrix
+    from trezor import res
 
     if __debug__:
         global matrix
 
     _, label = _get_code_and_label(code)
+    confirm = res.load(ui.ICON_CONFIRM)
+    cancel = res.load(ui.ICON_CANCEL)
+    clean = res.load(ui.ICON_CLEAR)
 
     await ctx.call(ButtonRequest(code=ProtectCall),
                    ButtonAck)
@@ -26,18 +30,18 @@ async def request_pin_on_display(ctx: wire.Context, code: int=None) -> str:
     def onchange():
         c = dialog.cancel
         if matrix.pin:
-            c.content = 'Clean'
+            c.content = clean
         else:
-            c.content = 'Cancel'
+            c.content = cancel
         c.taint()
         c.render()
 
-    ui.display.clear()
+    ui.display.bar(0, 0, 240, 240, ui.C_SCREEN_BG)
     matrix = PinMatrix(label, with_zero=True)
     matrix.onchange = onchange
-    dialog = ConfirmDialog(matrix)
-    dialog.cancel.area = (0, 240 - 48, 80, 48)
-    dialog.confirm.area = (240 - 80, 240 - 48, 80, 48)
+    dialog = ConfirmDialog(matrix, confirm, cancel)
+    dialog.cancel.area = (0, 240 - 48, 80, 46)
+    dialog.confirm.area = (240 - 80, 240 - 48, 80, 46)
 
     while True:
         res = await dialog
@@ -66,7 +70,7 @@ async def request_pin_on_client(ctx: wire.Context, code: int=None) -> str:
 
     code, label = _get_code_and_label(code)
 
-    ui.display.clear()
+    ui.display.bar(0, 0, 240, 240, ui.C_SCREEN_BG)
     matrix = PinMatrix(label)
     matrix.render()
 

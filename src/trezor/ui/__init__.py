@@ -20,22 +20,18 @@ def rgbcolor(r: int, g: int, b: int) -> int:
     return ((r & 0xF8) << 8) | ((g & 0xFC) << 3) | ((b & 0xF8) >> 3)
 
 
+TEMP_BLUE   = rgbcolor(0x01, 0x02, 0x19)
 LIGHT_RED   = rgbcolor(0xFF, 0x00, 0x00)
-# RED E4572E
-RED         = rgbcolor(0xE4, 0x57, 0x2E)
+
 # ACTIVE DARK RED A64022
 ACTIVE_RED  = rgbcolor(0xA6, 0x40, 0x22)
 PINK        = rgbcolor(0xE9, 0x1E, 0x63)
 PURPLE      = rgbcolor(0x9C, 0x27, 0xB0)
 DEEP_PURPLE = rgbcolor(0x67, 0x3A, 0xB7)
 INDIGO      = rgbcolor(0x3F, 0x51, 0xB5)
-BLUE        = rgbcolor(0x21, 0x96, 0xF3)
-LIGHT_BLUE  = rgbcolor(0x03, 0xA9, 0xF4)
 CYAN        = rgbcolor(0x00, 0xBC, 0xD4)
 TEAL        = rgbcolor(0x00, 0x96, 0x88)
 
-# GREEN 4CC148
-GREEN       = rgbcolor(0x4C, 0xC1, 0x48)
 # ACTIVE DARK GREEN 1A8C14
 ACTIVE_GREEN = rgbcolor(0x1A, 0x8C, 0x14)
 
@@ -43,15 +39,50 @@ LIGHT_GREEN = rgbcolor(0x87, 0xCE, 0x26)
 LIME        = rgbcolor(0xCD, 0xDC, 0x39)
 YELLOW      = rgbcolor(0xFF, 0xEB, 0x3B)
 AMBER       = rgbcolor(0xFF, 0xC1, 0x07)
-ORANGE      = rgbcolor(0xFF, 0x98, 0x00)
 DEEP_ORANGE = rgbcolor(0xFF, 0x57, 0x22)
 BROWN       = rgbcolor(0x79, 0x55, 0x48)
 LIGHT_GREY  = rgbcolor(0xDA, 0xDD, 0xD8)
-GREY        = rgbcolor(0x9E, 0x9E, 0x9E)
 DARK_GREY   = rgbcolor(0x3E, 0x3E, 0x3E)
 BLUE_GRAY   = rgbcolor(0x60, 0x7D, 0x8B)
 BLACK       = rgbcolor(0x00, 0x00, 0x00)
+
+
+# COLORS IN USE
+
+DARK_BLUE   = rgbcolor(0x01, 0x2E, 0x53)
+BLUE        = rgbcolor(0x02, 0x3D, 0x6E)
+LIGHT_BLUE  = rgbcolor(0x45, 0x62, 0x7B)
+GREEN       = rgbcolor(0x4C, 0xC1, 0x48)
+RED         = rgbcolor(0xFF, 0x00, 0x00)
 WHITE       = rgbcolor(0xFA, 0xFA, 0xFA)
+ORANGE      = rgbcolor(0xFF, 0xAA, 0x22)
+GREY        = rgbcolor(0x9C, 0x9C, 0x9C)
+
+
+# ASSGIGNED ELEMENTS COLORS
+
+C_SCREEN_BG             = BLUE
+
+# BTNS
+C_CONFIRM_BTN           = GREEN
+C_CONFIRM_BTN_DIS       = GREEN
+C_CANCEL_BTN            = RED
+C_CANCEL_BTN_DIS        = RED
+C_KEY_BTN               = DARK_BLUE
+C_KEY_BTN_DIS           = LIGHT_BLUE
+C_HOLD_BTN              = ORANGE
+C_HOLD_BTN_DIS          = ORANGE
+C_CLEAN_BTN             = ORANGE
+C_CLEAN_BTN_DIS         = ORANGE
+
+# FONT
+C_FONT                  = WHITE
+C_FONT_DIS              = GREY
+
+# ELEMENTS
+C_CIRCLE_BORDER         = GREY
+C_BULLET                = GREY
+C_BULLET_DIS            = LIGHT_BLUE
 
 BLACKISH     = rgbcolor(0x20, 0x20, 0x20)
 MONO   = Display.FONT_MONO
@@ -73,6 +104,9 @@ SCREEN = const(240)
 ICON_RESET    = 'trezor/res/header_icons/reset.toig'
 ICON_WIPE     = 'trezor/res/header_icons/wipe.toig'
 ICON_RECOVERY = 'trezor/res/header_icons/recovery.toig'
+ICON_CONFIRM  = 'trezor/res/confirm.toig'
+ICON_CLEAR    = 'trezor/res/clear.toig'
+ICON_CANCEL   = 'trezor/res/lock.toig'
 
 
 def contains(pos: tuple, area: tuple) -> bool:

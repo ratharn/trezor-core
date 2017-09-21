@@ -45,22 +45,14 @@ class PinMatrix(ui.Widget):
         header = '*' * len(self.pin) if self.pin else self.label
 
         # clear canvas under input line
-        display.bar(0, 0, 205, 48, ui.BLACK)
+        display.bar(0, 0, 240, 48, ui.C_SCREEN_BG)
 
         # input line with a header
-        display.text_center(120, 30, header, ui.BOLD, ui.GREY, ui.BLACK)
+        display.text_center(120, 30, header, ui.NORMAL, ui.GREY, ui.C_SCREEN_BG)
 
         # pin matrix buttons
         for btn in self.pin_buttons:
             btn.render()
-
-        # vertical border bars
-        # display.bar(79, 48, 2, 143, ui.blend(ui.BLACK, ui.WHITE, 0.25))
-        # display.bar(158, 48, 2, 143, ui.blend(ui.BLACK, ui.WHITE, 0.25))
-
-        # horizontal border bars
-        # display.bar(0, 95, 240, 2, ui.blend(ui.BLACK, ui.WHITE, 0.25))
-        # display.bar(0, 142, 240, 2, ui.blend(ui.BLACK, ui.WHITE, 0.25))
 
     def touch(self, event, pos):
         for btn in self.pin_buttons:
