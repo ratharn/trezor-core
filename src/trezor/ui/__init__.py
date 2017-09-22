@@ -101,12 +101,14 @@ BACKLIGHT_MAX = const(255)
 SCREEN = const(240)
 
 # icons
-ICON_RESET    = 'trezor/res/header_icons/reset.toig'
-ICON_WIPE     = 'trezor/res/header_icons/wipe.toig'
-ICON_RECOVERY = 'trezor/res/header_icons/recovery.toig'
-ICON_CONFIRM  = 'trezor/res/confirm.toig'
-ICON_CLEAR    = 'trezor/res/clear.toig'
-ICON_CANCEL   = 'trezor/res/lock.toig'
+ICON_RESET      = 'trezor/res/header_icons/reset.toig'
+ICON_WIPE       = 'trezor/res/header_icons/wipe.toig'
+ICON_RECOVERY   = 'trezor/res/header_icons/recovery.toig'
+ICON_CONFIRM    = 'trezor/res/confirm.toig'
+ICON_CLEAR      = 'trezor/res/clear.toig'
+ICON_CANCEL     = 'trezor/res/lock.toig'
+ICON_SEND       = 'trezor/res/send.toig'
+ICON_SEND_LOAD  = res.load(ICON_SEND)
 
 
 def contains(pos: tuple, area: tuple) -> bool:
@@ -168,9 +170,9 @@ def rotate(pos: tuple) -> tuple:
 
 def header(title, icon=ICON_RESET, fg=BLACK, bg=BLACK):
     display.bar(0, 0, 240, 32, bg)
-    if icon is not None:
-        display.icon(8, 4, res.load(icon), fg, bg)
-    display.text(8 + 24 + 2, 24, title, BOLD, fg, bg)
+    # if icon is not None:
+        # display.icon(8, 4, res.load(icon), fg, bg)
+    display.text(10, 24, title, BOLD, fg, bg)
 
 
 class Widget:

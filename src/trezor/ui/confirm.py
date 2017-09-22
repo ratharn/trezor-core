@@ -2,7 +2,7 @@ from micropython import const
 from trezor import loop
 from trezor.ui import Widget
 from .button import Button, BTN_CLICKED, BTN_STARTED
-from .button import CONFIRM_BUTTON, CONFIRM_BUTTON_ACTIVE
+from .button import CLEAR_BUTTON, CLEAR_BUTTON_ACTIVE, CONFIRM_BUTTON, CONFIRM_BUTTON_ACTIVE
 from .button import CANCEL_BUTTON, CANCEL_BUTTON_ACTIVE
 from .loader import Loader
 
@@ -52,9 +52,9 @@ class HoldToConfirmDialog(Widget):
 
     def __init__(self, content, hold='Hold to confirm', *args, **kwargs):
         self.content = content
-        self.button = Button((0, 240 - 48, 240, 48), hold,
-                             normal_style=CONFIRM_BUTTON,
-                             active_style=CONFIRM_BUTTON_ACTIVE)
+        self.button = Button((2, 240 - 48, 236, 44), hold,
+                             normal_style=CLEAR_BUTTON,
+                             active_style=CLEAR_BUTTON_ACTIVE)
         self.loader = Loader(*args, **kwargs)
 
     def render(self):

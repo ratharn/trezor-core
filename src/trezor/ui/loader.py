@@ -5,16 +5,16 @@ from trezor import ui
 
 
 DEFAULT_LOADER = {
-    'bg-color': ui.BLACK,
-    'fg-color': ui.WHITE,
+    'bg-color': ui.C_SCREEN_BG,
+    'fg-color': ui.C_HOLD_BTN,
     'icon': None,
     'icon-fg-color': None,
 }
 DEFAULT_LOADER_ACTIVE = {
-    'bg-color': ui.BLACK,
-    'fg-color': ui.ACTIVE_GREEN,
-    'icon': None,
-    'icon-fg-color': None,
+    'bg-color': ui.C_SCREEN_BG,
+    'fg-color': ui.C_CONFIRM_BTN,
+    'icon': ui.ICON_SEND_LOAD,
+    'icon-fg-color': ui.C_FONT,
 }
 
 
@@ -28,10 +28,10 @@ class Loader(ui.Widget):
 
     def start(self):
         self.start_ticks_ms = utime.ticks_ms()
-        ui.display.bar(0, 32, 240, 240 - 80, ui.BLACK)
+        ui.display.bar(0, 32, 240, 240 - 80, ui.C_SCREEN_BG)
 
     def stop(self):
-        ui.display.bar(0, 32, 240, 240 - 80, ui.BLACK)
+        ui.display.bar(0, 32, 240, 240 - 80, ui.C_SCREEN_BG)
         ticks_diff = utime.ticks_ms() - self.start_ticks_ms
         self.start_ticks_ms = None
         return ticks_diff >= self.target_ms

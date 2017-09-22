@@ -36,9 +36,9 @@ async def hold_to_confirm(ctx, content, code=None, *args, **kwargs):
     from trezor.messages.ButtonRequestType import Other
     from trezor.messages.wire_types import ButtonAck
 
-    ui.display.clear()
-
-    dialog = HoldToConfirmDialog(content, 'Hold to confirm', *args, **kwargs)
+    # ui.display.clear()
+    ui.display.bar(0, 0, 240, 240, ui.C_SCREEN_BG)
+    dialog = HoldToConfirmDialog(content, 'Hold to send', *args, **kwargs)
 
     if code is None:
         code = Other

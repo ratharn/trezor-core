@@ -2,7 +2,7 @@ from micropython import const
 from trezor import ui
 
 TEXT_HEADER_HEIGHT = const(32)
-TEXT_LINE_HEIGHT = const(23)
+TEXT_LINE_HEIGHT = const(30)
 TEXT_MARGIN_LEFT = const(10)
 
 
@@ -18,8 +18,8 @@ class Text(ui.Widget):
         offset_y = TEXT_LINE_HEIGHT + TEXT_HEADER_HEIGHT
         style = ui.NORMAL
         fg = ui.WHITE
-        bg = ui.BLACK
-        ui.header(self.header_text, self.header_icon, ui.GREEN, ui.BLACK)
+        bg = ui.C_SCREEN_BG
+        ui.header(self.header_text, self.header_icon, ui.C_HOLD_BTN, ui.C_SCREEN_BG)
 
         for item in self.content:
             if isinstance(item, str):

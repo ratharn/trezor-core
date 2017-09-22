@@ -42,13 +42,16 @@ class PinMatrix(ui.Widget):
 
     def render(self):
 
-        header = '*' * len(self.pin) if self.pin else self.label
+
 
         # clear canvas under input line
         display.bar(0, 0, 240, 48, ui.C_SCREEN_BG)
-
-        # input line with a header
-        display.text_center(120, 30, header, ui.NORMAL, ui.GREY, ui.C_SCREEN_BG)
+        if self.pin:
+            header = '*' * len(self.pin)
+            display.text_center(120, 30, header, ui.NORMAL, ui.C_FONT, ui.C_SCREEN_BG)
+        else:
+            header = self.label
+            display.text_center(120, 30, header, ui.NORMAL, ui.GREY, ui.C_SCREEN_BG)
 
         # pin matrix buttons
         for btn in self.pin_buttons:
