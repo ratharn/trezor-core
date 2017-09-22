@@ -17,17 +17,29 @@ class NullContext:
         pass
 
 
+async def click():
+    touching = False
+    while True:
+        if touching:
+            ev, *pos = await loop.select(io.TOUCH)
+            if ev == io.TOUCH_END:
+                return
+        else:
+            ev, *pos = await loop.select(io.TOUCH)
+            if ev == io.TOUCH_START:
+                touching = True
+
+
 @unimport
 async def layout_homescreen():
     from apps.common.request_pin import request_pin
 
     ctx = NullContext()
-    touch = loop.select(io.TOUCH)
     unlocked = False
 
     while True:
         display_homescreen_lock(unlocked)
-        await touch
+        await click()
         await request_pin(ctx)
         unlocked = True
 
