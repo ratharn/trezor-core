@@ -4,10 +4,10 @@ from trezor.utils import unimport
 
 def display_homescreen_lock(unlocked):
     if unlocked:
-        image = res.load('trezor/res/unlock-home3.toif')
+        image = res.load('trezor/res/unlock-home4.toif')
         ui.display.image(0, 0, image)
     else:
-        image = res.load('trezor/res/lock-home3.toif')
+        image = res.load('trezor/res/lock-home4.toif')
         ui.display.image(0, 0, image)
 
 
