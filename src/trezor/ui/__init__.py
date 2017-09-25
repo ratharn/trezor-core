@@ -92,9 +92,9 @@ BOLD   = Display.FONT_BOLD
 # radius for buttons and other elements
 BTN_RADIUS = const(2)
 
-BACKLIGHT_NORMAL = const(60)
-BACKLIGHT_DIM = const(5)
-BACKLIGHT_NONE = const(2)
+BACKLIGHT_NORMAL = const(100)
+BACKLIGHT_DIM = const(40)
+BACKLIGHT_NONE = const(10)
 BACKLIGHT_MAX = const(255)
 
 # display width and height
