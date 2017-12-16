@@ -45,7 +45,7 @@ class PinMatrix(ui.Widget):
         header = '*' * len(self.pin) if self.pin else self.label
 
         # clear canvas under input line
-        display.bar(0, 0, 205, 48, ui.BG)
+        #display.bar(0, 0, 205, 48, ui.BG)
 
         # input line with a header
         display.text_center(120, 30, header, ui.NORMAL, ui.blend(ui.BG, ui.FG, 0.5), ui.BG)
