@@ -13,6 +13,9 @@ workflow_handlers = {}
 
 def register(mtype, handler, *args):
     '''Register `handler` to get scheduled after `mtype` message is received.'''
+    if type(mtype) != int:
+        raise KeyError
+
     if mtype in workflow_handlers:
         raise KeyError
     workflow_handlers[mtype] = (handler, args)
@@ -115,6 +118,7 @@ async def session_handler(iface, sid):
             if not reader:
                 reader = ctx.getreader()
                 await reader.aopen()
+
             try:
                 handler, args = workflow_handlers[reader.type]
             except KeyError:
